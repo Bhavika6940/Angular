@@ -1,2 +1,21 @@
 <p>rooms works!</p>
 <h1>Welcome to {{hotelName}}</h1>
+<div [hidden]="hideRooms">
+    Number of rooms:
+    <div [innerText]="numberOfRooms"></div>
+</div>
+<button (click)="toggle()"> Toggle</button>
+<div>Debug - Available Rooms: {{rooms?.availableRooms}}</div>
+<!-- <div>Debug - Condition Result: {{rooms.availableRooms > 0}}</div> -->
+<div *ngIf="(rooms?.availableRooms ?? 0) > 0" [ngStyle]="{color : 'green' }">
+    Rooms List
+</div>
+
+
+{{ rooms?.availableRooms ?? 'No rooms '}}
+<div *ngIf="rooms?.availableRooms ">
+    Rooms List
+    {{roomList |json}}
+    
+</div>
+<div [ngStyle]="{color : rooms?.availableRooms ? 'green' : 'red' }">{{rooms?.availableRooms}}</div>

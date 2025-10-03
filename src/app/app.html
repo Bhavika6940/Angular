@@ -1,2 +1,9 @@
-<h1>Hello angular</h1>
-<app-rooms></app-rooms>
+<h1>Hello ,Angular!</h1>
+
+<p>Debug - Current role: "{{role}}" (length: {{role.length}})</p>
+<div [ngSwitch]="role">
+    <div *ngSwitchCase="'User'">Welcome User!</div>
+    <div *ngSwitchCase="'Admin'"><app-rooms></app-rooms></div>
+
+    <div *ngSwitchDefault>You are not authorized to see this page!</div>
+</div>
