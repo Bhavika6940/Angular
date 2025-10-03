@@ -4,18 +4,37 @@
     Number of rooms:
     <div [innerText]="numberOfRooms"></div>
 </div>
-<button (click)="toggle()"> Toggle</button>
-<div>Debug - Available Rooms: {{rooms?.availableRooms}}</div>
-<!-- <div>Debug - Condition Result: {{rooms.availableRooms > 0}}</div> -->
-<div *ngIf="(rooms?.availableRooms ?? 0) > 0" [ngStyle]="{color : 'green' }">
-    Rooms List
-</div>
 
+<div [ngStyle] = "{color :'green'}">Debug - Available Rooms: {{rooms?.availableRooms}}</div>
+<div>Debug - Condition Result: {{(rooms.availableRooms ?? 0) > 0}}</div>
 
 {{ rooms?.availableRooms ?? 'No rooms '}}
-<div *ngIf="rooms?.availableRooms ">
-    Rooms List
-    {{roomList |json}}
-    
+@if(rooms?.availableRooms){
+    <div>
+       {{ rooms?.availableRooms}}
+    </div>
+}
+
+<div [ngStyle]="{color : rooms?.availableRooms ? 'green' : 'red' }">{{rooms.availableRooms}}</div>
+
+<div>
+    <button  (click)="addRoom()">Add Room</button>
 </div>
-<div [ngStyle]="{color : rooms?.availableRooms ? 'green' : 'red' }">{{rooms?.availableRooms}}</div>
+
+@if ((rooms?.availableRooms ?? 0 )>0){
+    <div >
+        <app-room-list-component 
+          [rooms]="roomList" 
+          (selectedRoom)="selectRoom($event)" [title]="title">
+        </app-room-list-component>
+    </div>
+}
+
+@if(roomSelected){
+    <div>
+        {{roomSelected | json}}
+    </div>
+}
+<div>
+    <button (click)="toggle()"> Toggle</button>
+</div>
