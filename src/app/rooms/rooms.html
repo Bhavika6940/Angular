@@ -1,3 +1,7 @@
+<app-header></app-header>
+<app-header></app-header>
+<app-header></app-header>
+<app-header></app-header>
 <p>rooms works!</p>
 <h1>Welcome to {{hotelName}}</h1>
 <div [hidden]="hideRooms">
@@ -5,35 +9,33 @@
     <div [innerText]="numberOfRooms"></div>
 </div>
 
-<div [ngStyle] = "{color :'green'}">Debug - Available Rooms: {{rooms?.availableRooms}}</div>
+<div [ngStyle]="{color :'green'}">Debug - Available Rooms: {{rooms?.availableRooms}}</div>
 <div>Debug - Condition Result: {{(rooms.availableRooms ?? 0) > 0}}</div>
 
 {{ rooms?.availableRooms ?? 'No rooms '}}
 @if(rooms?.availableRooms){
-    <div>
-       {{ rooms?.availableRooms}}
-    </div>
+<div>
+    {{ rooms?.availableRooms}}
+</div>
 }
 
 <div [ngStyle]="{color : rooms?.availableRooms ? 'green' : 'red' }">{{rooms.availableRooms}}</div>
 
 <div>
-    <button  (click)="addRoom()">Add Room</button>
+    <button (click)="addRoom()">Add Room</button>
 </div>
 
 @if ((rooms?.availableRooms ?? 0 )>0){
-    <div >
-        <app-room-list-component 
-          [rooms]="roomList" 
-          (selectedRoom)="selectRoom($event)" [title]="title">
-        </app-room-list-component>
-    </div>
+<div>
+    <app-room-list-component [rooms]="roomList" (selectedRoom)="selectRoom($event)" [title]="title">
+    </app-room-list-component>
+</div>
 }
 
 @if(roomSelected){
-    <div>
-        {{roomSelected | json}}
-    </div>
+<div>
+    {{roomSelected | json}}
+</div>
 }
 <div>
     <button (click)="toggle()"> Toggle</button>
