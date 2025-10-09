@@ -7,7 +7,10 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './header.html',
   styleUrl: './header.scss'
 })
-export class Header {
-
+export class Header implements OnInit {
+  title: string = 'Title';
   constructor() {}
+  ngOnInit(): void {
+    
+  }
 }
