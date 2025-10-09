@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { Employee } from '../employee/employee';
-import { Room } from '../rooms/roomsInterface';
+import { Rooms } from '../rooms/rooms';
 
 @Component({
   selector: 'app-container',
-  imports: [],
+  imports: [Employee, Rooms],
   templateUrl: './container.html',
   styleUrl: './container.scss'
 })
